@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ypixxzrTV Community Site — Built Live by Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .pulse-slow { animation: pulse-slow 3s infinite; }
+        .contrib-section { min-height: 100px; }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+
+    <!-- Header -->
+    <header class="border-b border-purple-500/30 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-extrabold">
+                    <span class="text-purple-400">ypixxzr</span><span class="text-white">TV</span>
+                    <span class="text-sm font-normal text-gray-400 ml-2">Community Site</span>
+                </h1>
+                <p class="text-xs text-gray-500 mono">Built live by Twitch chat + OpenClaw AI</p>
+            </div>
+            <div class="text-right">
+                <div class="text-sm text-purple-300 mono pulse-slow" id="status">LIVE BUILD MODE</div>
+                <div class="text-xs text-gray-500" id="contrib-count">0 contributions</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 py-16 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+            Ce site est construit <span class="text-purple-400">en direct</span> par le chat
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+            Chaque contribution d'un viewer est intégrée en temps réel par une IA OpenClaw.
+            Tapez <code class="text-purple-300 bg-purple-900/50 px-2 py-1 rounded">!contrib</code> dans le chat Twitch pour participer.
+        </p>
+        <div class="flex gap-4 justify-center">
+            <a href="https://twitch.tv/ypixxzr" target="_blank"
+               class="bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded-lg font-semibold transition-colors">
+                Rejoindre le stream
+            </a>
+            <a href="#contributions"
+               class="border border-purple-500/50 hover:border-purple-400 px-6 py-3 rounded-lg font-semibold transition-colors">
+                Voir les contributions
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="max-w-6xl mx-auto px-6 py-8">
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white/5 rounded-xl p-6 text-center glow">
+                <div class="text-3xl font-bold text-purple-400" id="stat-contribs">0</div>
+                <div class="text-sm text-gray-400">Contributions</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-6 text-center glow">
+                <div class="text-3xl font-bold text-purple-400" id="stat-viewers">0</div>
+                <div class="text-sm text-gray-400">Contributeurs</div>
+            </div>
+            <div class="bg-white/5 rounded-xl p-6 text-center glow">
+                <div class="text-3xl font-bold text-purple-400" id="stat-version">v0</div>
+                <div class="text-sm text-gray-400">Version</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contributions -->
+    <section id="contributions" class="max-w-6xl mx-auto px-6 py-12">
+        <h3 class="text-2xl font-bold mb-8 text-center">
+            Contributions du chat
+            <span class="text-sm font-normal text-gray-500 block mt-1">Les plus récentes en premier</span>
+        </h3>
+
+        <!-- IDEAS SECTION -->
+        <div class="mb-12">
+            <h4 class="text-lg font-semibold text-purple-300 mb-4 flex items-center gap-2">
+                <span>💡</span> Idées implémentées
+            </h4>
+            <div id="ideas-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 contrib-section">
+                <!-- Les contributions "idée" seront ajoutées ici par l'agent -->
+                <div class="bg-white/5 border border-dashed border-purple-500/30 rounded-xl p-6 text-center text-gray-500">
+                    En attente de la première idée... Tapez <code>!contrib idée: votre idée</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- CODE SECTION -->
+        <div class="mb-12">
+            <h4 class="text-lg font-semibold text-green-300 mb-4 flex items-center gap-2">
+                <span>🧑‍💻</span> Code du chat
+            </h4>
+            <div id="code-grid" class="grid grid-cols-1 gap-4 contrib-section">
+                <!-- Les contributions "code" seront ajoutées ici -->
+                <div class="bg-white/5 border border-dashed border-green-500/30 rounded-xl p-6 text-center text-gray-500">
+                    En attente du premier code... Tapez <code>!contrib code: &lt;votre html&gt;</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- MESSAGES WALL -->
+        <div class="mb-12">
+            <h4 class="text-lg font-semibold text-yellow-300 mb-4 flex items-center gap-2">
+                <span>💬</span> Mur de messages
+            </h4>
+            <div id="messages-wall" class="flex flex-wrap gap-3 contrib-section">
+                <!-- Les contributions "msg" seront ajoutées ici -->
+                <div class="bg-white/5 border border-dashed border-yellow-500/30 rounded-xl px-4 py-2 text-gray-500">
+                    En attente du premier message... Tapez <code>!contrib msg: votre message</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- ART GALLERY -->
+        <div class="mb-12">
+            <h4 class="text-lg font-semibold text-pink-300 mb-4 flex items-center gap-2">
+                <span>🎨</span> Galerie ASCII Art
+            </h4>
+            <div id="art-gallery" class="grid grid-cols-1 md:grid-cols-3 gap-4 contrib-section">
+                <!-- Les contributions "art" seront ajoutées ici -->
+                <div class="bg-white/5 border border-dashed border-pink-500/30 rounded-xl p-6 text-center text-gray-500">
+                    En attente du premier art... Tapez <code>!contrib art: votre ascii art</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-purple-500/30 mt-12">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <p>
+                Construit en direct sur
+                <a href="https://twitch.tv/ypixxzr" class="text-purple-400 hover:underline">twitch.tv/ypixxzr</a>
+                par le chat + <a href="https://openclaw.ai" class="text-purple-400 hover:underline">OpenClaw</a> AI
+            </p>
+            <p class="mt-2 mono text-xs">Chaque commit = une contribution du chat. 100% communautaire. 100% open source.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

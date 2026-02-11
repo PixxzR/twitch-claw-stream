@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.openclaw.ai/schema/openclaw.json",
+  "channels": {
+    "twitch": {
+      "plugin": "@openclaw/twitch",
+      "accounts": [
+        {
+          "username": "TON_BOT_USERNAME",
+          "accessToken": "oauth:TON_TOKEN_ICI",
+          "refreshToken": "TON_REFRESH_TOKEN_ICI",
+          "clientId": "TON_CLIENT_ID_ICI",
+          "channel": "#ypixxzr",
+          "requireMention": false,
+          "allowFrom": ["TON_TWITCH_USER_ID", "MOD1_ID", "MOD2_ID"],
+          "allowedRoles": ["broadcaster", "moderator", "vip"],
+          "rateLimit": {
+            "messagesPerWindow": 20,
+            "windowSeconds": 30
+          }
+        }
+      ]
+    }
+  },
+  "skills": {
+    "load": {
+      "extraDirs": [
+        "./skills"
+      ]
+    }
+  },
+  "memory": {
+    "persistent": true
+  }
+}
